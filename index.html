@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- dx fills this in from [web.app] title in Dioxus.toml; it appends
+             into whatever is here, so it has to start empty. -->
+        <title>Karate-Dō -käsikirja</title>
+        <!-- Relative, so the same build works from any subdirectory a static
+             host puts it under. -->
+        <link rel="manifest" href="manifest.webmanifest">
+        <link rel="icon" href="icons/icon-192.png">
+        <!-- iOS reads the manifest for the home-screen name and icon, but only
+             these tell an older iPhone to open it without Safari's chrome. The
+             status bar takes its colour from theme-color on iOS 16.4+, and
+             falls back to "black" — near enough to the app's own #0f172a. -->
+        <meta name="theme-color" content="#0f172a">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Karate-Dō">
+        <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+        <!-- The wasm takes a moment to arrive; without this the screen is white
+             first and dark after, which reads as a flash on a phone. -->
+        <style>
+            html, body { margin: 0; padding: 0; background: #0f172a; }
+            /* A standalone iPhone window has nothing behind it to bounce
+               against, so the rubber band just exposes the page edge. */
+            body { overscroll-behavior-y: contain; }
+        </style>
+    <link rel="preload" as="script" href="/Karate-Do-App/assets/karate-do-dxh6166ec488b22940.js" crossorigin></head>
+    <body>
+        <div id="main"></div>
+        <script>
+            // Registered from the page's own directory, so the worker's scope
+            // is exactly this app. updateViaCache:'none' keeps HTTP caching
+            // from hiding a new worker for a day.
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker
+                        .register('sw.js', { updateViaCache: 'none' })
+                        .catch(function () { /* dev server has no sw.js */ });
+                });
+            }
+        </script>
+    <script type="module" async src="/Karate-Do-App/assets/karate-do-dxh6166ec488b22940.js"></script>
+            </body>
+</html>
