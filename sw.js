@@ -14,7 +14,7 @@
 // Generated from web/sw.js.in by scripts/publish_web.sh — do not edit the copy
 // under the published directory.
 
-const CACHE = 'karate-do-bc674a6c1ea8';
+const CACHE = 'karate-do-02b859b65ee9';
 const SHELL = [
     "./",
     "manifest.webmanifest",
@@ -22,8 +22,8 @@ const SHELL = [
     "icons/icon-192.png",
     "icons/icon-512.png",
     "icons/icon-maskable-512.png",
-    "assets/karate-do-dxh220ffaf4478562.js",
-    "assets/karate-do_bg-dxhdd944bbaa618a1d4.wasm"
+    "assets/karate-do-dxhb8ad6ebac0a5cfc.js",
+    "assets/karate-do_bg-dxhad1f583321b094c7.wasm"
 ];
 // Absolute forms of the same list, to match incoming request URLs against.
 const CACHED = new Set(SHELL.map(function (p) { return new URL(p, self.location).href; }));
